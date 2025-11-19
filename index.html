@@ -1,32 +1,154 @@
-<!DOCTYPE html> <!--Bedeutet das hier eine html seite startet-->
-<html>
+<!DOCTYPE html> 
+<html lang="de"> <!--Sprache auf Deutsch gesetzt-->
 
 <head>
-    <meta charset="utf-8">
-    <title>YourWebsite</title>
-
-    <link rel="stylesheet" href="css/style.css"> <!--Verknüpfung zu einer CSS Datei. href ist ein Linkziel-->
-
+    <meta charset="utf-8"> <!--Zeichensatz definiert-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!--Responsives Desig auf größe des aktuellen Displays + Zoom eingeschränkt. -->
+    <title>Events</title> 
+    <link rel="stylesheet" href="css/style.css"> <!--Externe (besser als intern&inline) Verknüpfung zur CSS Datei-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> <!--CDN Methode für Bootstrap CSS, wollte mir kein package manager downloaden :D-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--preconnect zur schnelleren verbindung-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Inter-->
 </head>
+
 <body>
-<h1>Digitales Marketing</h1>
-<p><a href="Strategie & Zielgruppenanalyse.html">Strategie & Zielgruppenanalyse</a> </p>
-<p><a href="Content & Kommunikation.html">Content Marketing</a> </p>
-<p><a href="Analyse und Optimierung.html">Analyse und Optimierung</a> </p>
-<img src="Marketing1.jpg" alt="Beispielbild" />
 
-<p2>Social Media Marketing 101 ist die Kunst, mit strategischem Content auf sozialen Plattformen wie Instagram, Facebook
-    oder TikTok Markenbekanntheit zu steigern und Kunden zu gewinnen.
-    Social Media Marketing (SMM) ist ein zentraler Bestandteil moderner Online-Marketingstrategien. Es umfasst alle
-    Maßnahmen, die Unternehmen ergreifen, um über soziale Netzwerke mit ihrer Zielgruppe zu kommunizieren, ihre Produkte
-    zu bewerben und ihre Markenidentität zu stärken. Dabei geht es nicht nur um das Posten von Bildern oder Videos –
-    eine erfolgreiche Social-Media-Strategie basiert auf klaren Zielen, Zielgruppenverständnis und konsistenter
-    Markenkommunikation.
-</p>
+    <!-- Navigation -->
+  <nav>
+  <div class="logo">
+    <a href="index.html">
+    <img src="img/Redbull logo.png" alt="Logo" class="logo-img">
+    </a>
+  </div>
+    <ul>
+    <li><a href="product.html">Product</a></li>
+    <li><a href="event.html">Event</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    </ul>
+  </nav>
 
-<h2>Kapitel 1</h2>
+  <header class="hero">
+    <img class="hero-image" src="img/Design ohne Titel.png" alt="RedbullRunclub">
+    <div class="hero-content">
+      <p>Redbulls New Event</p>
+      <p>Join our Redbull Runclub</p>
+      <a href="#contactForm"> <button class="button0">JOIN NOW</button></a>
+    </div>
+  </header> 
 
+  <!-- Aktuelle Events -->
+  <section id="Events" class="section1">
+    <p2>See our most recent events
+  </section>
+
+<!-- carousel aus Bootstrap5 (sry für die vielen Kommentare)-->
+  <!-- Die gesamte steuernde Logik, ist bereits in der Bootstrap JS-Bibliothek fertig codiert und enthalten.
+      Durch die Einbindung der Bootstrap JS-Datei am Anfang der HTML-Seite wird diese Logik aktiviert. -->
+       <!-- Haupt-Container: id verbindet alle Steuerelemente, carousel-dark = dunkle Pfeile für helle Bilder, slide = Slide-Animation -->
+  <div id="carouselRedbull" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-pause="false"> <!-- Hier mache ich databsride zur verbindung der dbinterval zeit, 
+    databspause geht gegen die standardmäßige bootstrap Einstellung, dass wenn die Mouse auf dem Carousel ist, das automatische scrollen stoppt-->
+
+  <!-- Indikatoren(Die Punkte unten) Jeder Button springt zu einem bestimmten Slide -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselRedbull" data-bs-slide-to="0" class="active"></button> <!-- data-bs-slide-to="0" = erstes Bild, class="active" = aktuell sichtbar -->
+    <button type="button" data-bs-target="#carouselRedbull" data-bs-slide-to="1"></button> <!--Aria-label habe ich rausgenommen, weil es nicht notwenig ist für die Aufgaben-->
+    <button type="button" data-bs-target="#carouselRedbull" data-bs-slide-to="2"></button>
+  </div>
+  
+  <!-- bilder slides container: Alle Bilder müssen hier drin sein, sonst funktioniert das Carousel nicht -->
+  <div class="carousel-inner">
+    
+    <!-- SLIDE 1: data-bs-interval="6000" = 6 Sekunden Anzeigezeit -->
+    <div class="carousel-item active" data-bs-interval="6000">
+      <img src="img/4709032.jpg" class="d-block w-100" alt="Ladezeit 10min"> <!-- d-block w-100 = Bild ist Block-Element und nimmt 100% Breite ein - 
+      Das sind alles Hilfsklassen aus der Boostrap Bibliothek (sind bereits festgelegt und müssen von mir nicht definiert weden wow!)-->
+      <div class="carousel-caption d-md-block"><!-- (Text über dem Bild): d-none = Habe ich entfernt, da es auch auf mobile lesbar sein soll -->
+        <h5>REDBULL MOTORCROSS</h5>
+        <p>June 2025: Highest Jump recorded in the "Redbull Ultra".</p>
+      </div>
+    </div>
+    
+    <!-- SLIDE 2:wird erst sichtbar beim Wechsel, 6 Sekunden Anzeigezeit -->
+    <div class="carousel-item" data-bs-interval="6000">
+      <img src="img/carrie-borden-1Y2ty3dHrKA-unsplash.jpg" class="d-block w-100" alt="Ladezeit 20min">
+      <div class="carousel-caption d-md-block">
+        <h5>REDBULL SKYDIVING</h5>
+        <p>November 2025: Skydiving World Record of 136 ft</p>
+      </div>
+    </div>
+    <!-- SLIDE 3:wird erst sichtbar beim Wechsel, 6 Sekunden Anzeigezeit -->
+    <div class="carousel-item" data-bs-interval="6000">
+      <img src="img/wp10965538-f1-2022-4k-wallpapers.jpg" class="d-block w-100" alt="Ladezeit 30min">
+      <div class="carousel-caption d-md-block">
+        <h5>REDBULL F1 RACING</h5>
+        <p>The Red Bull Racing RB20 for the F1 World Championship</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- previous button (linker Pfeil) -->
+  <!-- data-bs-target verbindet Button mit Carousel, data-bs-slide="prev" = geht zum vorherigen Bild -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselRedbull" data-bs-slide="prev">
+    <!-- Das Pfeil-Icon (SVG von Bootstrap)-->
+    <span class="carousel-control-prev-icon" ></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  
+  <!-- Next button (rechter Pfeil) -->
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselRedbull" data-bs-slide="next">
+    <span class="carousel-control-next-icon">
+    <span class="visually-hidden">Next</span>
+  </button>
+  
+</div> 
+
+  <!-- How to become a Redbull Athlete -->
+  <section id="RedbullAthlete" class="section2">
+    <h3>How to become a Redbull Athlete</h3>
+    <p>Do you want to become a Redbull Athlete? <br />
+       Make sure you're ready!:</p>
+  </section>
+  
+  <!-- Shop our latest Product-->
+  <section id="ShopProduct" class="section3">
+    <div class="ShopContainer1"> <!--ich mache das div element, damit ich das den text & button besser mit dem bild ausrichten kann.-->
+    <div>
+    <h4 class="shop-text">Shop our latest Product</h4>
+    <p>Fuel up with our latest Product <br />
+        The Redbull Energy Drink.</p>
+    <button class="button3">SHOP NOW</button>
+    </div>
+    <div>
+    <img class="shop-image" src="img/Redbullcan1.1.png" >
+    </div>
+    </div>
+</section>
+
+  <!-- Kontakt / Join us Now! -->
+   <section id="contactForm" class="section4">
+    <p>Send us you're information, to join our next community run <br />
+       We will be happy to see you</p>
+ <form>
+  <div class="mb-3">
+    <label for="InputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="InputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="InputPassword1">
+  </div>
+  <button type="JOIN" class="button4">Join Today!</button>
+</form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> <!--Bootstrap CDN Methode für JS-->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script> <!-- CDN Methode für fancybox von fancyapps.com-->
+
+  <footer>
+    <p>© 2025 Redbull</p>
+  </footer>
 
 </body>
-
-</html>
