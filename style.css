@@ -1,0 +1,274 @@
+html { scroll-behavior: smooth; }
+
+:root {
+  --applegrey: #1D1D1F;
+  --lightgrey: #d6d6d6;
+  --lightgrey2: #a1a1a6;
+  --white: #f5f5f7;
+  --text: #1d1d1f;
+  --redbullblue: #0045B5;
+  --a: #2997ff;
+}
+
+* { /*Universal Selector, gilt für alle Elemente*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Absichtlich kein body css, damit ich mehr Freiheit habe bei der Gestaltung der einzelnen Sektionen */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 20px;
+  background: #1D1D1F;
+  color: #C0BFBF;
+}
+
+nav .logo {
+  position: center;
+}
+
+nav .logo-img {
+  width: 125px;
+  padding-left: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  opacity: 50%;
+  text-decoration: none;
+  font-size: 1rem;
+  padding-right: 20px;
+}
+
+nav ul li a:hover {
+    opacity: 75%;
+    color: var(--a);
+    transition: color 0.5s ease;
+  }
+
+.hero {
+  position: relative; /*relativ positionieren, damit ich die anderen elemente absolut positionieren kann*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%; /*Bild soll die volle Breite des Containers einnehmen*/
+  height: 100%; /*Bild soll die volle Höhe des Containers einnehmen*/
+  object-fit: cover; /*Bild soll den Container ausfüllen, ohne das Seitenverhältnis zu verändern*/
+  z-index: 1; /*Hintergrundbild soll hinter dem Text liegen, deswegen z-index 1*/
+}
+
+.hero-content {
+  position: absolute; /*absolute positionieren, damit es über dem Hintergrundbild liegt*/
+  z-index: 10; /* z-index 2 wäre auch ok, wichtig ist nur, dass es höher ist als das Hintergrundbild*/
+  text-align: center;
+  color: white;
+}
+
+.hero-content p { /*Nochmal hero content für Paragraphen innerhalb des hero-content Bereichs (aus unterrichtsinhalten) */
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.button0 {
+  background-color: var(--redbullblue);
+  color: var(--white);
+  display: inline-block; /* Damit padding und margin funktionieren wie erwartet (sehr leicht in der Web-Konsole zu verstehen/sehen*/
+  padding: 0.8rem 1.4rem;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  border-color: transparent;  /*border entfernen, "none" ist kein gültiger Wert*/
+  border-radius: 980px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.button0:hover {
+  background-color: lightskyblue;
+  color : rgb(0, 0, 0);
+  opacity: 0.5;
+  transition: background-color 0.15s ease;
+  box-shadow: 5px 5px 10px rgba(70, 68, 68, 0.4); /* Nicht sichtbar auf schwarzem hintergrund aber trotzdem cool;) */ 
+}
+
+.section1 {
+    font-size: 40px;
+    height: 200px;
+    background-color: var(--applegrey);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+.section1 p2 {
+    display: inline-block;
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px) { /* Hier probiere ich das erste mal mediaqueries für Bildschirme kleiner als 768px (Tablets und Handys)
+  die infos dazu habe ich aus dem youtube video: "Master Responsive CSS Media Queries in easy way"*/
+  .section1 {
+    height: auto;
+    background-color: #001b47; /* mit der mediaquery ändere ich auch die hintergrundfarbe (wie krass!)*/
+    padding: auto;
+    font-size: 28px;
+  }
+  
+  .section1 p2 {
+    display: block;
+    margin-top: auto;
+  }
+}
+
+
+.carousel-item img { /* Klasse für die Bilder im Carousel */
+    height: 500px; /* setzt eine feste Höhe für die Bilder */
+    width: 1.2rem; /* Breite wird automatisch angepasst */
+    object-fit: cover;
+    width: 100%; /* stellt sicher, dass das Bild die volle Breite des Containers einnimmt */
+}
+
+/* 3. Caption Text Styling (Bigger and Bold) */
+.carousel-caption h5 { /* Überschrift im Carousel */
+    font-weight: 700; /* Fett */
+    font-size: 2.25rem; /* Größere Schriftgröße responsiv */
+    text-shadow: 2px 2px 4px rgba(0, 110, 254, 0.7); /* Textschatten für bessere Sichtbarkeit und cooler effekt */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.carousel-caption p {
+    font-weight: 500;
+    font-size: 1.15rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    z-index: 2;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon { /*Da ich Java Bootstrap am anfang der HTML seite eingebunden habe, 
+  kann ich die Bootstrap Button hier einfach ansprechen und verändern.*/
+    background-color: #1f2937; 
+    padding: 1rem;
+    border-radius: 50%; 
+    width: 3rem; 
+    height: 3rem;
+    box-shadow: 0 0 10px rgba(0, 110, 254, 0.7); /* Shadow for depth */
+    filter: invert(100%); /* Makes the icon (which is dark by default in carousel-dark) white */
+}
+
+/* For the dark carousel, let's make the background slightly more visible 
+   and use a strong red color for the indicators */
+.carousel-indicators button {
+    background-color: #000000; /* Bright Red indicators */
+    border: 1px solid #991b1b;
+}
+
+.section2{
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.section3{
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.shop-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.shop-image {
+  width: auto;
+  height: 500px; 
+  object-fit: contain;
+  margin-top: 50px;
+}
+
+.ShopContainer1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Hier mache ich den Grid-Container responsiv, d.h. ich sage wie oft kann ich den value 500px in den Container reinpacken basierend auf der bildschirmgröße*/
+  justify-content: center;
+  justify-items: center;
+  align-items: center; 
+}
+
+.button3 {
+  background-color: var(--redbullblue);
+  color: var(--white);
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  border-color: transparent;
+  padding: 10px 10px;
+  border-radius: 980px;
+  font-weight: bold;
+}
+
+.button3:hover {
+  background-color: lightskyblue;
+  color: rgb(0, 0, 0);
+  opacity: 0.5; 
+  transition: background-color 0.15s ease;
+  box-shadow: 5px 5px 10px rgba(70, 68, 68, 0.4); 
+}
+
+.section4 {
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.button4 {
+  background-color: var(--redbullblue);
+  color: var(--white);
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  border-color: transparent; 
+  padding: 1rem 2rem;
+  border-radius: 980px;
+  font-weight: bold;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
+.button4:hover {
+  background-color: lightskyblue;
+  color: rgb(0, 0, 0);
+  opacity: 0.5;
+  transition: background-color 0.15s ease;
+  box-shadow: 5px 5px 10px rgba(70, 68, 68, 0.4); 
+}
